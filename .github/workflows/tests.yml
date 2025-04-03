@@ -25,7 +25,5 @@ jobs:
             -   name: Upload coverage to Coveralls
                 uses: coverallsapp/github-action@v2
                 with:
-                    path-to-clover: coverage/clover.xml
                     github-token: ${{ secrets.GITHUB_TOKEN }}
-                    coveralls-repo-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
