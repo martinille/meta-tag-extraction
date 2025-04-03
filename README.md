@@ -1,5 +1,5 @@
 # Meta Tag Extraction
-[![Build Status](https://travis-ci.org/yourusername/metatag-extraction.svg?branch=main)](https://travis-ci.org/yourusername/metatag-extraction)
+[![Tests](https://github.com/martinille/meta-tag-extraction/actions/workflows/tests.yml/badge.svg)](https://github.com/martinille/meta-tag-extraction/actions/workflows/tests.yml)
 [![Coverage Status](https://coveralls.io/repos/github/martinille/meta-tag-extraction/badge.svg?branch=master)](https://coveralls.io/github/martinille/meta-tag-extraction?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
