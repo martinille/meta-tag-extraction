@@ -1,7 +1,10 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types = 1);
+/**
+ * Class MetaTagExtraction
+ *
+ * This class is responsible for extracting meta tags from a given URL or HTML string.
+ * It uses the WebScraper class to fetch the HTML content and the HtmlParserService to parse the meta tags.
+ */
 namespace MetaTagExtraction;
 
 use Psr\Http\Client\ClientExceptionInterface;

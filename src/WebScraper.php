@@ -23,6 +23,15 @@ class WebScraper
     private ?CacheInterface $cache = null;
     private int $cacheTtl = 60;
 
+    /**
+     * Sets the cache instance and TTL.
+     * Cache object must implement the `Psr\SimpleCache\CacheInterface`.
+     * Use null to disable caching.
+     * @param  null|CacheInterface  $cache
+     * @param  int  $ttl
+     * @return void
+     * @throws \InvalidArgumentException
+     */
     public function setCache(?CacheInterface $cache, int $ttl = 60): void
     {
         if ($this->cache !== null && !($this->cache instanceof CacheInterface)) {
@@ -35,18 +44,29 @@ class WebScraper
         $this->cacheTtl = $ttl;
     }
 
+    /**
+     * Sets the request factory instance.
+     * @param RequestFactoryInterface $requestFactory
+     */
     public function setRequestFactory(RequestFactoryInterface $requestFactory): void
     {
         $this->requestFactory = $requestFactory;
     }
 
+
+    /**
+     * Sets the HTTP client instance.
+     * Http client object must implement the `Psr\Http\Client\ClientInterface`.
+     * For example, you can use `GuzzleHttp\Client` or `Symfony\Component\HttpClient\HttpClient`.
+     * @param ClientInterface $httpClient
+     */
     public function setHttpClient(ClientInterface $httpClient): void
     {
         $this->httpClient = $httpClient;
     }
 
-
     /**
+     * Fetches the content of a given URL.
      * @throws ClientExceptionInterface|InvalidArgumentException
      */
     public function fetch(string $url): ResponseInterface
@@ -81,7 +101,6 @@ class WebScraper
         return (new HttpFactory())->createResponse($response->getStatusCode())
             ->withBody(Utils::streamFor($body));
     }
-
 
     private function prepareRequest(string $url): RequestInterface
     {

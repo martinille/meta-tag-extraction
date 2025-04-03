@@ -1,7 +1,9 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
+/**
+ * HtmlParserService class.
+ *
+ * This class is responsible for parsing HTML content and extracting meta tags.
+ */
 namespace MetaTagExtraction;
 
 class HtmlParserService
