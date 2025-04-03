@@ -35,8 +35,7 @@
 		"symfony/http-client": "^6.4"
 	},
     "scripts": {
-        "test": [
-            "php vendor/bin/phpunit --testdox tests/"
-        ]
+        "test": "php vendor/bin/phpunit --testdox tests/",
+        "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-clover coverage/clover.xml"
     }
 }
