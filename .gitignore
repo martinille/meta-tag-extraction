@@ -1,0 +1,20 @@
+# IDEs, ddev, and OS files
+.idea
+.vscode
+.ddev
+.DS_Store
+Thumbs.db
+
+# Composer
+vendor/
+composer.lock
+
+# PHPUnit cache
+.phpunit.result.cache
+coverage/
+
+
+# Debugging
+*.log
+*.cache
+
