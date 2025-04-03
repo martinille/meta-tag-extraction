@@ -16,11 +16,11 @@ final class MetaTagExtractionTest extends TestCase
 {
     public function testMetaTagExtraction(): void
     {
-        $html = '<html><head><meta property="og:title" content="Test Title"></head></html>';
+        $html = '<html lang="en"><head><meta property="og:title" content="Test Title"><title>Test title</title></head></html>';
         $metaTagExtraction = new MetaTagExtraction();
         $tags = $metaTagExtraction->extractFromHtml($html);
 
-        $this->assertCount(1, $tags);
+        $this->assertCount(3, $tags);
         $this->assertInstanceOf(Tag::class, $tags[0]);
         $this->assertEquals('meta', $tags[0]->getTagName());
         $this->assertEquals('Test Title', $tags[0]->getValue());
@@ -51,13 +51,14 @@ final class MetaTagExtractionTest extends TestCase
      */
     public function testExtractMetaTagsFromValidUrl(): void
     {
+        $htmlBody = '<html lang="en"><head><meta property="og:title" content="Test Title"><title>Test title</title></head></html>';
         $webScraperMock = $this->createMock(WebScraper::class);
-        $webScraperMock->method('fetch')->willReturn(new Response(200, [], '<html><head><meta property="og:title" content="Test Title"></head></html>'));
+        $webScraperMock->method('fetch')->willReturn(new Response(200, [], $htmlBody));
 
         $metaTagExtraction = new MetaTagExtraction($webScraperMock);
         $tags = $metaTagExtraction->extractFromUrl('https://example.com');
 
-        $this->assertCount(1, $tags);
+        $this->assertCount(3, $tags);
         $this->assertInstanceOf(Tag::class, $tags[0]);
         $this->assertEquals('meta', $tags[0]->getTagName());
         $this->assertEquals('Test Title', $tags[0]->getValue());
@@ -74,14 +75,15 @@ final class MetaTagExtractionTest extends TestCase
         $cacheMock->method('get')->willReturn(null);
         $cacheMock->method('set')->willReturn(true);
 
+        $htmlBody = '<html lang="en"><head><meta property="og:title" content="Test Title"><title>Test title</title></head></html>';
         $webScraperMock = $this->createMock(WebScraper::class);
-        $webScraperMock->method('fetch')->willReturn(new Response(200, [], '<html><head><meta property="og:title" content="Test Title"></head></html>'));
+        $webScraperMock->method('fetch')->willReturn(new Response(200, [], $htmlBody));
 
         $metaTagExtraction = new MetaTagExtraction($webScraperMock);
         $metaTagExtraction->webScraper->setCache($cacheMock, 60);
         $tags = $metaTagExtraction->extractFromUrl('https://example.com');
 
-        $this->assertCount(1, $tags);
+        $this->assertCount(3, $tags);
         $this->assertInstanceOf(Tag::class, $tags[0]);
         $this->assertEquals('meta', $tags[0]->getTagName());
         $this->assertEquals('Test Title', $tags[0]->getValue());
