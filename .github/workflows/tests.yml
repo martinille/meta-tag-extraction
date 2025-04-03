@@ -1,0 +1,31 @@
+name: Tests
+
+on: [ push, pull_request ]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v4
+
+            -   name: Set up PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.1'
+                    coverage: xdebug
+
+            -   name: Install dependencies
+                run: composer install --prefer-dist --no-progress --no-suggest
+
+            -   name: Run tests with coverage
+                run: composer test:coverage
+
+            -   name: Upload coverage to Coveralls
+                uses: coverallsapp/github-action@v2
+                with:
+                    path-to-clover: coverage/clover.xml
+                    github-token: ${{ secrets.GITHUB_TOKEN }}
+                    coveralls-repo-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
