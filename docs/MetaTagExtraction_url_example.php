@@ -15,7 +15,7 @@ $metaTagExtraction = new MetaTagExtraction();
 
 try {
     // Extract all meta tags from the given URL
-    $metaTags = $metaTagExtraction->extractMetaTagsFromUrl($url);
+    $metaTags = $metaTagExtraction->extractFromUrl($url);
 
     // Print the extracted meta tags
     foreach ($metaTags as $metaTag) {

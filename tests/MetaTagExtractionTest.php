@@ -18,7 +18,7 @@ final class MetaTagExtractionTest extends TestCase
     {
         $html = '<html><head><meta property="og:title" content="Test Title"></head></html>';
         $metaTagExtraction = new MetaTagExtraction();
-        $tags = $metaTagExtraction->extractMetaTagsFromHtml($html);
+        $tags = $metaTagExtraction->extractFromHtml($html);
 
         $this->assertCount(1, $tags);
         $this->assertInstanceOf(Tag::class, $tags[0]);
@@ -30,7 +30,7 @@ final class MetaTagExtractionTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $metaTagExtraction = new MetaTagExtraction();
-        $metaTagExtraction->extractMetaTagsFromHtml('');
+        $metaTagExtraction->extractFromHtml('');
     }
 
     /**
@@ -41,7 +41,7 @@ final class MetaTagExtractionTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $metaTagExtraction = new MetaTagExtraction();
-        $metaTagExtraction->extractMetaTagsFromUrl('invalid-url');
+        $metaTagExtraction->extractFromUrl('invalid-url');
     }
 
     /**
@@ -55,7 +55,7 @@ final class MetaTagExtractionTest extends TestCase
         $webScraperMock->method('fetch')->willReturn(new Response(200, [], '<html><head><meta property="og:title" content="Test Title"></head></html>'));
 
         $metaTagExtraction = new MetaTagExtraction($webScraperMock);
-        $tags = $metaTagExtraction->extractMetaTagsFromUrl('https://example.com');
+        $tags = $metaTagExtraction->extractFromUrl('https://example.com');
 
         $this->assertCount(1, $tags);
         $this->assertInstanceOf(Tag::class, $tags[0]);
@@ -79,7 +79,7 @@ final class MetaTagExtractionTest extends TestCase
 
         $metaTagExtraction = new MetaTagExtraction($webScraperMock);
         $metaTagExtraction->webScraper->setCache($cacheMock, 60);
-        $tags = $metaTagExtraction->extractMetaTagsFromUrl('https://example.com');
+        $tags = $metaTagExtraction->extractFromUrl('https://example.com');
 
         $this->assertCount(1, $tags);
         $this->assertInstanceOf(Tag::class, $tags[0]);

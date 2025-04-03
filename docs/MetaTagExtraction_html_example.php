@@ -23,7 +23,7 @@ $metaTagExtraction = new MetaTagExtraction();
 
 try {
     // Extract all meta tags from the given URL
-    $metaTags = $metaTagExtraction->extractMetaTagsFromHtml($html);
+    $metaTags = $metaTagExtraction->extractFromHtml($html);
 
     // Print the extracted meta tags
     foreach ($metaTags as $metaTag) {

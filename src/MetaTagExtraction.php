@@ -21,7 +21,7 @@ class MetaTagExtraction
      * @throws InvalidArgumentException
      * @throws ClientExceptionInterface
      */
-    public function extractMetaTagsFromUrl(string $url): array
+    public function extractFromUrl(string $url): array
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             throw new \InvalidArgumentException('Invalid URL provided');
@@ -45,7 +45,7 @@ class MetaTagExtraction
      * @return array<Tag>
      * @throws \InvalidArgumentException
      */
-    public function extractMetaTagsFromHtml(string $html): array
+    public function extractFromHtml(string $html): array
     {
         if (empty($html)) {
             throw new \InvalidArgumentException('Empty HTML provided');
