@@ -1,17 +1,25 @@
 <?php
 /**
- * This example demonstrates how to use the MetaTagExtraction library to extract meta tags from a URL.
+ * This example demonstrates how to use
+ * the MetaTagExtraction library to extract
+ * meta tags from a URL using Symfony's HttpClient.
  * @package MetaTagExtraction
  */
 
 use MetaTagExtraction\MetaTagExtraction;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\SimpleCache\InvalidArgumentException;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\Psr18Client;
 
 require_once 'vendor/autoload.php';
 
 $url = 'https://example.com';
 $metaTagExtraction = new MetaTagExtraction();
+
+// Set the HTTP client to Symfony's HttpClient
+$httpClient = new Psr18Client(HttpClient::create());
+$metaTagExtraction->webScraper->setHttpClient($httpClient);
 
 /** @noinspection DuplicatedCode */
 try {
