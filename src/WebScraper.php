@@ -51,10 +51,10 @@ class WebScraper
      */
     public function fetch(string $url): ResponseInterface
     {
-        // Cache key
+        // Create a cache key based on the URL
         $cacheKey = $this->getCacheKey($url);
 
-        // Pokus o získanie odpovede z cache
+        // Try to get the response from cache
         if ($this->cache !== null) {
             $cachedResponse = $this->cache->get($cacheKey);
             if (is_string($cachedResponse)) {
@@ -63,17 +63,17 @@ class WebScraper
             }
         }
 
-        // Vytvorenie PSR-7 Request objektu
+        // Create a request object (PSR-7)
         $request = $this->prepareRequest($url);
 
-        // Odoslanie requestu cez PSR-18 Client
+        // Send the request and get the response using the HTTP client
         $response = $this->httpClient->sendRequest($request);
         $response->getBody()->getContents();
 
-        // Prečítanie obsahu odpovede
+        // Get the response body
         $body = (string)$response->getBody();
 
-        // Uloženie do cache
+        // Save the response to cache
         if ($this->cache !== null) {
             $this->cache->set($cacheKey, $body, $this->cacheTtl);
         }
@@ -93,6 +93,7 @@ class WebScraper
             $this->setRequestFactory(new HttpFactory());
         }
 
+        // Create a request object (PSR-7)
         $request = $this->requestFactory->createRequest('GET', $url);
         $request = $request->withHeader('User-Agent', self::USER_AGENT);
         $request = $request->withHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8');
