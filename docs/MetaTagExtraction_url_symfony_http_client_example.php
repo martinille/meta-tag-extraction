@@ -6,7 +6,7 @@
  * @package MetaTagExtraction
  */
 
-use MetaTagExtraction\MetaTagExtraction;
+use MartinIlle\MetaTagExtraction\MetaTagExtraction;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\HttpClient\HttpClient;

@@ -1,10 +1,10 @@
 <?php
 
-namespace MetaTagExtraction\Tests;
+namespace MartinIlle\MetaTagExtraction\Tests;
 
-use MetaTagExtraction\MetaTagExtraction;
-use MetaTagExtraction\Tag;
-use MetaTagExtraction\WebScraper;
+use MartinIlle\MetaTagExtraction\MetaTagExtraction;
+use MartinIlle\MetaTagExtraction\Tag;
+use MartinIlle\MetaTagExtraction\WebScraper;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;

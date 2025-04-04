@@ -4,7 +4,7 @@
  * @package MetaTagExtraction
  */
 
-use MetaTagExtraction\MetaTagExtraction;
+use MartinIlle\MetaTagExtraction\MetaTagExtraction;
 use Psr\SimpleCache\InvalidArgumentException;
 
 require_once 'vendor/autoload.php';

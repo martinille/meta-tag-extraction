@@ -5,7 +5,7 @@
  * This class is responsible for extracting meta tags from a given URL or HTML string.
  * It uses the WebScraper class to fetch the HTML content and the HtmlParserService to parse the meta tags.
  */
-namespace MetaTagExtraction;
+namespace MartinIlle\MetaTagExtraction;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\SimpleCache\InvalidArgumentException;

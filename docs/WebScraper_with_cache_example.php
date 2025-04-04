@@ -4,7 +4,7 @@
  * @package MetaTagExtraction
  */
 
-use MetaTagExtraction\WebScraper;
+use MartinIlle\MetaTagExtraction\WebScraper;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;

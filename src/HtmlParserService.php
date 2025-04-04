@@ -4,7 +4,7 @@
  *
  * This class is responsible for parsing HTML content and extracting meta tags.
  */
-namespace MetaTagExtraction;
+namespace MartinIlle\MetaTagExtraction;
 
 class HtmlParserService
 {

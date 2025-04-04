@@ -1,9 +1,9 @@
 <?php
 
-namespace MetaTagExtraction\Tests;
+namespace MartinIlle\MetaTagExtraction\Tests;
 
-use MetaTagExtraction\HtmlParserService;
-use MetaTagExtraction\Tag;
+use MartinIlle\MetaTagExtraction\HtmlParserService;
+use MartinIlle\MetaTagExtraction\Tag;
 use PHPUnit\Framework\TestCase;
 
 final class HtmlParserServiceTest extends TestCase

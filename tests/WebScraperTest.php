@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MetaTagExtraction\Tests;
+namespace MartinIlle\MetaTagExtraction\Tests;
 
-use MetaTagExtraction\WebScraper;
+use MartinIlle\MetaTagExtraction\WebScraper;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientExceptionInterface;
@@ -107,7 +107,7 @@ final class WebScraperTest extends TestCase
     public function testCacheKeyGeneration(): void
     {
         $url = 'https://example.com';
-        $expectedKey = 'MetaTagExtraction\WebScraper::getCacheKey_c984d06a';
+        $expectedKey = 'MartinIlle\MetaTagExtraction\WebScraper::getCacheKey_c984d06a';
 
         $scraper = new WebScraper();
 

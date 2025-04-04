@@ -13,12 +13,12 @@
     ],
     "autoload": {
 		"psr-4": {
-			"MetaTagExtraction\\": "src/"
+			"MartinIlle\\MetaTagExtraction\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"MetaTagExtraction\\Tests\\": "tests/"
+			"MartinIlle\\MetaTagExtraction\\Tests\\": "tests/"
 		}
 	},
 	"minimum-stability": "stable",

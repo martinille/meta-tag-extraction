@@ -1,8 +1,8 @@
 <?php
 
-namespace MetaTagExtraction\Tests;
+namespace MartinIlle\MetaTagExtraction\Tests;
 
-use MetaTagExtraction\Tag;
+use MartinIlle\MetaTagExtraction\Tag;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
