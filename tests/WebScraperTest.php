@@ -25,9 +25,11 @@ final class WebScraperTest extends TestCase
      */
     public function testFetchesHtmlSuccessfully(): void
     {
+        // Arrange
         $url = 'https://example.com';
         $htmlContent = '<html lang="en"><head><title>Example</title></head><body>Content</body></html>';
 
+        // Mocking the HTTP client and request factory
         $httpClient = $this->createMock(ClientInterface::class);
         $request = $this->createMock(RequestInterface::class);
         $request->method('withHeader')->willReturnSelf();
@@ -38,19 +40,21 @@ final class WebScraperTest extends TestCase
         $stream = $this->createMock(StreamInterface::class);
         $stream->method('getContents')->willReturn($htmlContent);
         $stream->method('__toString')->willReturn($htmlContent);
-
         $response->method('getBody')->willReturn($stream);
         $response->method('getStatusCode')->willReturn(200);
         $httpClient->method('sendRequest')->willReturn($response);
         $cache->method('get')->willReturn(null);
 
+        // Setting up the WebScraper instance
         $scraper = new WebScraper();
         $scraper->setHttpClient($httpClient);
         $scraper->setRequestFactory($requestFactory);
         $scraper->setCache($cache);
 
+        // Act
         $result = $scraper->fetch($url);
 
+        // Assert
         $this->assertEquals(200, $result->getStatusCode());
         $this->assertEquals($htmlContent, (string)$result->getBody());
     }
@@ -80,6 +84,22 @@ final class WebScraperTest extends TestCase
 
         $this->assertEquals(200, $result->getStatusCode());
         $this->assertEquals($htmlContent, (string)$result->getBody());
+    }
+
+    public function testThrowsExceptionForEmptyUrl(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $scraper = new WebScraper();
+        $scraper->fetch('');
+    }
+
+    public function testThrowsExceptionForInvalidUrl(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $scraper = new WebScraper();
+        $scraper->fetch('invalid-url');
     }
 
     /**

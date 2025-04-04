@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace MartinIlle\MetaTagExtraction;
 
@@ -69,6 +69,15 @@ class WebScraper
      */
     public function fetch(string $url): ResponseInterface
     {
+        if (empty($url)) {
+            throw new \InvalidArgumentException('URL cannot be empty');
+        }
+
+        // Validate the URL
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            throw new \InvalidArgumentException('Invalid URL provided');
+        }
+
         // Create a cache key based on the URL
         $cacheKey = $this->getCacheKey($url);
 
