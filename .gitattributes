@@ -10,4 +10,4 @@ phpunit.xml           export-ignore
 # IDE, environment, and OS files
 .editorconfig         export-ignore
 .gitattributes        export-ignore
-.gitinore             export-ignore
+.gitignore            export-ignore
