@@ -24,7 +24,7 @@ composer require martinille/meta-tag-extraction
 
 ### Usage
 ```php
-use Martinille\MetaTagExtraction\MetaTagExtraction;
+use MartinIlle\MetaTagExtraction\MetaTagExtraction;
 
 $url = 'https://example.com';
 $metaTagExtraction = new MetaTagExtraction();
