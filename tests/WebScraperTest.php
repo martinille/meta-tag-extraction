@@ -109,10 +109,9 @@ final class WebScraperTest extends TestCase
         $url = 'https://example.com';
         $expectedKey = 'MartinIlle\MetaTagExtraction\WebScraper::getCacheKey_c984d06a';
 
-        $scraper = new WebScraper();
-
         $reflection = new \ReflectionMethod(WebScraper::class, 'getCacheKey');
 
+        $scraper = new WebScraper();
         $cacheKey = $reflection->invoke($scraper, $url);
 
         $this->assertEquals($expectedKey, $cacheKey);
