@@ -129,6 +129,13 @@ class WebScraper
 
     private function getCacheKey(string $url): string
     {
-        return sprintf('%s_%s', __METHOD__, substr(md5($url), 0, 8));
+        $key = sprintf('%s_%s', __METHOD__, substr(md5($url), 0, 8));
+        return $this->sanitizeCacheKey($key);
+    }
+
+    private function sanitizeCacheKey(string $key): string
+    {
+        $key = preg_replace('/[^a-zA-Z0-9_]/', '_', $key);
+        return preg_replace('/_+/', '_', $key);
     }
 }

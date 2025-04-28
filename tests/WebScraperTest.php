@@ -127,7 +127,7 @@ final class WebScraperTest extends TestCase
     public function testCacheKeyGeneration(): void
     {
         $url = 'https://example.com';
-        $expectedKey = 'MartinIlle\MetaTagExtraction\WebScraper::getCacheKey_c984d06a';
+        $expectedKey = 'MartinIlle_MetaTagExtraction_WebScraper_getCacheKey_c984d06a';
 
         $reflection = new \ReflectionMethod(WebScraper::class, 'getCacheKey');
 
